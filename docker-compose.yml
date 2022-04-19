@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  web:
+    build: ./src
+    command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 9000
+    volumes:
+      - ./src/:/usr/src/app/
+    env_file:
+      - .env
+    ports:
+      - 8008:9000
+    restart: always
+
+  mongo:
+    image: mongo
+    ports:
+      - 27888:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    restart: always
