@@ -1,3 +1,12 @@
+#Enviroment
 .env
 
+#FirstProgram
 movies_random.py
+
+#Mongo
+mongodb/
+backups/
+
+#Virtualenv
+venv/

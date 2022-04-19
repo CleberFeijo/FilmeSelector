@@ -14,9 +14,13 @@ services:
 
   mongo:
     image: mongo
-    ports:
-      - 27888:27017
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=root
+    container_name: mongo_local
     restart: always
+    volumes:
+       - ./mongodb:/data/db
+       - ./backups:/backups
+    ports:
+        - 27017:27017
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: root
